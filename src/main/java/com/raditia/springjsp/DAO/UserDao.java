@@ -58,7 +58,7 @@ public class UserDao {
     }
 
     //Memasukkan data
-    public static void insertUser(User user) {
+    public static int insertUser(User user) {
 
         int status = 0;
 
@@ -73,6 +73,8 @@ public class UserDao {
 
             System.out.println(e.toString());
         }
+
+        return status;
     }
 
     //Menampilkan semua user
