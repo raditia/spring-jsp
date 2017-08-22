@@ -35,11 +35,11 @@ public class WebController {
 
         if (status == 1) {
 
-            return new ModelAndView("redirect/view_user");
+            return new ModelAndView("redirect:/view_user");
         }
         else {
 
-            return new ModelAndView("redirect/view_user");
+            return new ModelAndView("redirect:/view_user");
         }
     }
 
