@@ -23,6 +23,8 @@
                         <td>${user.getId()}</td>
                         <td>${user.getName()}</td>
                         <td>${user.getEmail()}</td>
+                        <td><a href="#">edit</a> </td>
+                        <td><a href="" </td>
                     </tr>
                 </c:forEach>
             </table>

@@ -3,10 +3,7 @@ package com.raditia.springjsp.controller;
 import com.raditia.springjsp.DAO.UserDao;
 import com.raditia.springjsp.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -49,5 +46,13 @@ public class WebController {
         List<User> userList = UserDao.getAllUser();
 
         return new ModelAndView("view_user", "userList", userList);
+    }
+
+    @RequestMapping("/delete_user")
+    public ModelAndView deleteUser(@PathVariable int id) {
+
+        // TODO: Insert function here
+
+        
     }
 }

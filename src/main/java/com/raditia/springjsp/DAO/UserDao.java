@@ -109,4 +109,57 @@ public class UserDao {
 
         return userList;
     }
+
+    //Menampilkan user tertentu
+    public static User getUserById(int id) {
+
+        User user = null;
+
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM " + table_name +
+                            "(WHERE " + col_id + "=?"
+            );
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getInt(col_id));
+                user.setName(resultSet.getString(col_name));
+                user.setEmail(resultSet.getString(col_email));
+            }
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return user;
+    }
+
+    //Menghapus User
+    private static int deleteUser(User user) {
+
+        int status = 0;
+
+        try {
+            Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "DELETE FROM " + table_name + "(WHERE )" + col_id + "(=?)"
+            );
+            preparedStatement.setInt(1, user.getId());
+
+            status = preparedStatement.executeUpdate();
+        }
+        catch (Exception e) {
+
+            System.out.println(e.toString());
+        }
+
+        return status;
+    }
 }
