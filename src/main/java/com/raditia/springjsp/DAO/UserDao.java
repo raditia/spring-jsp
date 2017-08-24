@@ -119,7 +119,7 @@ public class UserDao {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "SELECT * FROM " + table_name +
-                            "(WHERE " + col_id + "=?"
+                            " WHERE " + col_id + "=?"
             );
 
             preparedStatement.setInt(1, id);
@@ -142,14 +142,14 @@ public class UserDao {
     }
 
     //Menghapus User
-    private static int deleteUser(User user) {
+    public static int deleteUser(User user) {
 
         int status = 0;
 
         try {
             Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "DELETE FROM " + table_name + "(WHERE )" + col_id + "(=?)"
+                    "DELETE FROM " + table_name + " WHERE " + col_id + "=?"
             );
             preparedStatement.setInt(1, user.getId());
 

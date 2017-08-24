@@ -16,7 +16,6 @@
                     <th>Email</th>
                     <th>Edit</th>
                     <th>Delete</th>
-                    <th>Add</th>
                 </tr>
                 <c:forEach items="${userList}" var="user">
                     <tr>
@@ -24,10 +23,11 @@
                         <td>${user.getName()}</td>
                         <td>${user.getEmail()}</td>
                         <td><a href="#">edit</a> </td>
-                        <td><a href="" </td>
+                        <td><a href="delete_user/${user.getId()}">delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
+            <a href="add_user">Add user</a>
         </div>
     </div>
     </body>

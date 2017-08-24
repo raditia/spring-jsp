@@ -48,11 +48,25 @@ public class WebController {
         return new ModelAndView("view_user", "userList", userList);
     }
 
-    @RequestMapping("/delete_user")
-    public ModelAndView deleteUser(@PathVariable int id) {
+    @GetMapping(value = "delete_user/{id}")
+    public ModelAndView deleteUser(@ModelAttribute("user") User user) {
 
         // TODO: Insert function here
 
-        
+        int status = UserDao.deleteUser(user);
+
+        if (status == 1) {
+
+            System.out.println("User with ID: " + user.getId() + " is deleted successfully");
+
+            return new ModelAndView("redirect:/view_user");
+        }
+        else {
+
+            System.out.println("Gagal delete");
+
+            return new ModelAndView("redirect:/view_user");
+        }
+
     }
 }
